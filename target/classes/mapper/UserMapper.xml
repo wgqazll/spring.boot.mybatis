@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chanjet.spring.boot.mybatis.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="chanjet.spring.boot.mybatis.entity.User" >
+    <id column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List">
+  	name
+  </sql>
+  <select id="getUserByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+</mapper>
